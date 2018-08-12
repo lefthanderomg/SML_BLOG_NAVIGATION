@@ -29,13 +29,9 @@ public class Fragment_1 extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        view.findViewById(R.id.btn_next)
+        view.findViewById(R.id.btn_first_graph)
                 .setOnClickListener(Navigation.createNavigateOnClickListener(R.id.fragment_2, null));
 
-        view.findViewById(R.id.btn_next)
-                .setOnClickListener(button -> {
-                    Navigation.findNavController(button).navigate(R.id.action_fragment_1_to_fragment_2);
-                });
     }
 
 

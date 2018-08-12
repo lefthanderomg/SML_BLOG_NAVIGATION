@@ -3,15 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragment_1">
+    tools:context=".FragmentSignUp">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:id="@+id/btn_next"
         android:textSize="72sp"
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="1" />
+        android:text="2" />
 
 </FrameLayout>
