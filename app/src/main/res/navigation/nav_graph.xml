@@ -3,20 +3,41 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/fragment_1">
+    app:startDestination="@id/fragment_main">
 
     <fragment
-        android:id="@+id/fragment_1"
-        android:name="andrey.murzin.navigation.Fragment_1"
-        android:label="fragment_fragment_1"
-        tools:layout="@layout/fragment_fragment_1" >
+        android:id="@+id/fragment_main"
+        android:name="andrey.murzin.navigation.FragmentMain"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" >
+
         <action
-            android:id="@+id/action_fragment_1_to_fragment_2"
-            app:destination="@id/fragment_2" />
+            android:id="@+id/action_fragment_main_to_fragment_sign_up"
+            app:destination="@id/fragment_sign_up" />
+        <action
+            android:id="@+id/action_fragment_main_to_fragment_sign_in"
+            app:destination="@id/fragment_sign_in" />
     </fragment>
     <fragment
-        android:id="@+id/fragment_2"
-        android:name="andrey.murzin.navigation.Fragment_2"
-        android:label="fragment_fragment_2"
-        tools:layout="@layout/fragment_fragment_2" />
+        android:id="@+id/fragment_sign_up"
+        android:name="andrey.murzin.navigation.FragmentSignUp"
+        android:label="fragment_sign_up"
+        tools:layout="@layout/fragment_sign_up" >
+        <action
+            android:id="@+id/action_fragment_sign_up_to_fragmnet_congratulation"
+            app:destination="@id/fragmnet_congratulation" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_sign_in"
+        android:name="andrey.murzin.navigation.FragmentSignIn"
+        android:label="fragment_sign_in" >
+        <action
+            android:id="@+id/action_fragment_sign_in_to_fragmnet_congratulation"
+            app:destination="@id/fragmnet_congratulation" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmnet_congratulation"
+        android:name="andrey.murzin.navigation.FragmnetCongratulation"
+        android:label="fragment_congratulation"
+        tools:layout="@layout/fragment_congratulation" />
 </navigation>
