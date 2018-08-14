@@ -24,7 +24,7 @@ public class FragmnetCongratulation extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         TextView tvCongratulation = view.findViewById(R.id.tv_congratulation);
         if (getArguments() != null) {
-            String email = getArguments().getString("email", "");
+            String email = FragmnetCongratulationArgs.fromBundle(getArguments()).getEmail();
             tvCongratulation.setText(email);
         }
     }

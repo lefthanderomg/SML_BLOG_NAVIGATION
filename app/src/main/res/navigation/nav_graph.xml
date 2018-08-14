@@ -32,7 +32,11 @@
     <fragment
         android:id="@+id/fragment_sign_in"
         android:name="andrey.murzin.navigation.FragmentSignIn"
-        android:label="fragment_sign_in" />
+        android:label="fragment_sign_in" >
+        <action
+            android:id="@+id/action_fragment_sign_in_to_fragmnet_congratulation"
+            app:destination="@id/fragmnet_congratulation" />
+    </fragment>
     <fragment
         android:id="@+id/fragmnet_congratulation"
         android:name="andrey.murzin.navigation.FragmnetCongratulation"
