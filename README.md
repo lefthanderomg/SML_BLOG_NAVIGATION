@@ -127,14 +127,17 @@ app:defaultNavHost="true" - перехват системной кнопки Bac
 
 Есть два способа сделать это
 ~~~ Java
-        view.findViewById(R.id.btn_sign_up)
+view.findViewById(R.id.btn_sign_up)
                 .setOnClickListener(Navigation.createNavigateOnClickListener(R.id.fragment_sign_up, null));
-
-        view.findViewById(R.id.btn_sign_in)
+                
+view.findViewById(R.id.btn_sign_in)
                 .setOnClickListener(v->{
                     Navigation.findNavController(v).navigate(R.id.action_fragment_main_to_fragment_sign_up);
                 });
 ~~~
+
+Вот и все мы построили простейший навигационный граф
+
 
 
 
