@@ -77,6 +77,22 @@ dependencies {
 
 ![](img/img_connect.png)
 
+При это в xml файле генерируется action который указывает на следующий fragment
+
+~~~ html
+<fragment
+        android:id="@+id/fragment_prev"
+        android:name="andrey.murzin.navigation.FragmentMain"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" >
+
+        <action
+            android:id="@+id/action_fragment_prev_to_fragment_next"
+            app:destination="@id/fragment_next" />
+   
+</fragment>
+~~~
+
 ### Обозначить стартовый экран
 
 1) Выбрав стартовый экран 
@@ -84,6 +100,16 @@ dependencies {
 3) Выбрать Set as Start Destinition
 
 ![](img/img_start_destinition.png)
+
+либо довать в navigation 
+
+~~~ html
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/fragment_start"/>
+~~~
 
 ### Назначить "хост" навигационного графа
 
