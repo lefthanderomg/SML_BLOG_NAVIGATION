@@ -138,10 +138,26 @@ view.findViewById(R.id.btn_sign_in)
 
 Вот и все мы построили простейший навигационный граф
 
+### Передача данных
 
+1) Выбрав экран в navigation editor  добавляем аргументы
 
+![](img/img_data.png)
 
+2) Далее используем Bundle для передачи данных
 
+~~~ Java
+ Bundle bundle = new Bundle();
+ bundle.putString("email", edEmail.getText().toString());
+ bundle.putString("password", edPassword.getText().toString());
+ Navigation.findNavController(view).navigate(R.id.fragmnet_congratulation, bundle);
+~~~
+
+3) Достаем данные через getArguments();
+
+~~~ Java
+getArguments().getString("email", "");
+~~~
 
 
 
