@@ -168,6 +168,23 @@ view.findViewById(R.id.btn_sign_in)
 
 ![](img/img_data.png)
 
+Либо в Text прописываем аргументы
+
+~~~ html
+    <fragment
+        android:id="@+id/fragmnet_congratulation"
+        android:name="andrey.murzin.navigation.FragmnetCongratulation"
+        android:label="fragment_congratulation"
+        tools:layout="@layout/fragment_congratulation" >
+        <argument
+            android:name="email"
+            app:type="string" />
+        <argument
+            android:name="password"
+            app:type="string" />
+    </fragment>
+~~~
+
 2) Далее используем Bundle для передачи данных
 
 ~~~ Java
@@ -183,6 +200,37 @@ view.findViewById(R.id.btn_sign_in)
 getArguments().getString("email", "");
 ~~~
 
+### Передача данных safetype
+
+Есть второй способ передавать данные при помощи type-safe. Этот способ более безопастный.
+
+Чтобы передавать данные этим способом нужно настроить проект
+
+1) Добавить плагин
+
+~~~ groovy
+apply plugin: 'com.android.application'
+apply plugin: 'androidx.navigation.safeargs'
+~~~
+
+2) Добавить в build.gradle зависимость
+
+~~~ groovy
+dependencies {
+        classpath "android.arch.navigation:navigation-safe-args-gradle-plugin:1.0.0-alpha02"
+    }
+~~~
+
+3) Далее добавляем аргументы как в делали это ранее
+
+4) Извлекаем данные
+
+~~~ java
+FragmnetCongratulationArgs.fromBundle(getArguments()).getEmail();
+~~~
+
+Этот спосбо мне кажется удобнее, безопаснее и более правильным.
+
 ### Анимация перехода между экранами
 
 1) В Navigation Editor выбрать Action который будет осуществлять анимацию перехода
@@ -193,18 +241,3 @@ getArguments().getString("email", "");
 ## Итоги
 
 В настоящее время библиотека находится на ранней альфа-версии. Поэтому использывать ее в боевых проектах пока рано, но не смотря на это Navigation Architecture Component очень гибкая, мощная и интуитивно понятная библиотека.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
