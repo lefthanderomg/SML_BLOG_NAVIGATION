@@ -56,7 +56,7 @@ dependencies {
 </navigation>
 ~~~
 
-## Создание простейшего графа навигации
+## Создание графа навигации
 
 Библиотека navigation предназначена для реализации “single activity application” поэтому  activity выступает в роли "хоста" графа.Если в приложении несколько activity то каждая activity будет иметь свой граф.
 
@@ -77,6 +77,22 @@ dependencies {
 
 ![](img/img_connect.png)
 
+При это в xml файле генерируется action который указывает на следующий fragment
+
+~~~ html
+<fragment
+        android:id="@+id/fragment_prev"
+        android:name="andrey.murzin.navigation.FragmentMain"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" >
+
+        <action
+            android:id="@+id/action_fragment_prev_to_fragment_next"
+            app:destination="@id/fragment_next" />
+   
+</fragment>
+~~~
+
 ### Обозначить стартовый экран
 
 1) Выбрав стартовый экран 
@@ -84,6 +100,16 @@ dependencies {
 3) Выбрать Set as Start Destinition
 
 ![](img/img_start_destinition.png)
+
+либо добавить в navigation в параметры app:startDestination свой fragment
+
+~~~ html
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/fragment_start"/>
+~~~
 
 ### Назначить "хост" навигационного графа
 
@@ -136,8 +162,6 @@ view.findViewById(R.id.btn_sign_in)
                 });
 ~~~
 
-Вот и все мы построили простейший навигационный граф
-
 ### Передача данных
 
 1) Выбрав экран в navigation editor  добавляем аргументы
@@ -159,6 +183,9 @@ view.findViewById(R.id.btn_sign_in)
 getArguments().getString("email", "");
 ~~~
 
+## Итоги
+
+В настоящее время библиотека находится на ранней альфа-версии. Поэтому использывать ее в боевых проектах пока рано, но не смотря на это Navigation Architecture Component очень гибкая, мощная и интуитивно понятная библиотека.
 
 
 
