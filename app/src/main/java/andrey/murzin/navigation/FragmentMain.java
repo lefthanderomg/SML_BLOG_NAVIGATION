@@ -35,7 +35,7 @@ public class FragmentMain extends Fragment {
 
         view.findViewById(R.id.btn_sign_in)
                 .setOnClickListener(v->{
-                    Navigation.findNavController(v).navigate(R.id.action_fragment_main_to_fragment_sign_up);
+                    Navigation.findNavController(v).navigate(R.id.action_fragment_main_to_fragment_sign_in);
                 });
 
     }
