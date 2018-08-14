@@ -221,9 +221,17 @@ dependencies {
     }
 ~~~
 
-3) Далее добавляем аргументы как в делали это ранее
+3) Далее добавляем аргументы как в делали это ранее в navigation editor
 
-4) Извлекаем данные
+4) Передача данных
+~~~ java
+FragmentSignUpDirections.Action_fragment_sign_up_to_fragmnet_congratulation action
+                        = FragmentSignUpDirections
+                        .action_fragment_sign_up_to_fragmnet_congratulation("email", "password");
+Navigation.findNavController(view).navigate(action);
+~~~
+
+5) Извлекаем данные
 
 ~~~ java
 FragmnetCongratulationArgs.fromBundle(getArguments()).getEmail();
