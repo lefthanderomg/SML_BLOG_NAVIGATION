@@ -113,7 +113,8 @@ dependencies {
 ~~~
 
 app:defaultNavHost="true" - перехват системной кнопки Back.
-3) Далее добавить в acitvity
+
+3) Далее добавить в acitvity следующий код
 
 ~~~ Java
  @Override
@@ -121,6 +122,20 @@ app:defaultNavHost="true" - перехват системной кнопки Bac
         return Navigation.findNavController(this, R.id.nav_host_fragment).navigateUp();
     }
 ~~~
+
+### Привязка переходов к виджетам
+
+Есть два способа сделать это
+~~~ Java
+        view.findViewById(R.id.btn_sign_up)
+                .setOnClickListener(Navigation.createNavigateOnClickListener(R.id.fragment_sign_up, null));
+
+        view.findViewById(R.id.btn_sign_in)
+                .setOnClickListener(v->{
+                    Navigation.findNavController(v).navigate(R.id.action_fragment_main_to_fragment_sign_up);
+                });
+~~~
+
 
 
 
