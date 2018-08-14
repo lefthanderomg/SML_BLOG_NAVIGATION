@@ -101,7 +101,7 @@ dependencies {
 
 ![](img/img_start_destinition.png)
 
-либо довать в navigation 
+либо добавить в navigation в параметры app:startDestination свой fragment
 
 ~~~ html
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
@@ -185,6 +185,9 @@ view.findViewById(R.id.btn_sign_in)
 getArguments().getString("email", "");
 ~~~
 
+## Итоги
+
+В настоящее время библиотека находится на ранней альфа-версии. Поэтому использывать ее в боевых проектах пока рано, но не смотря на это Navigation Architecture Component очень гибкая, мощная и интуитивно понятная библиотека.
 
 
 
