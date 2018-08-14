@@ -41,7 +41,6 @@ dependencies {
 В этом режиме мы пишем xml код 
 
 ~~~ html
-...
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -55,24 +54,110 @@ dependencies {
         android:label="activity_main"
         tools:layout="@layout/activity_main" />
 </navigation>
-...
 ~~~
 
 ## Создание простейшего графа навигации
 
-Библиотека navigation предназначена для реализации “single activity application” поэтому  activity выступает в роли "хоста" графа.Если в приложении несколько activity то каждая активити будет иметь свой граф.
+Библиотека navigation предназначена для реализации “single activity application” поэтому  activity выступает в роли "хоста" графа.Если в приложении несколько activity то каждая activity будет иметь свой граф.
 
-Перейдем к практики и напишем простой навигационный граф постепенно усложняя его
+Перейдем к практики и напишем простой навигационный граф постепенно усложняя его.
 
 ### Добавление экранов
-* В редакторе графов кликните New Destination . Откроется диалоговое окно New Destination.
-* Кликните Create blank destination или выберете существующий фрагмент или активность. Откроется диалоговое окно Android Component.
-* Введите имя в поле Fragment Name. 
-* Введите имя в поле Fragment Layout Name. Это имя будет присвоено layout файлу фрагмента.
-* Нажмите Finish. 
+1) В редакторе графов кликните New Destination . Откроется диалоговое окно New Destination.
+2) Кликните Create blank destination или выберете существующий фрагмент или активность. Откроется диалоговое окно Android Component.
+3) Введите имя в поле Fragment Name. 
+4) Введите имя в поле Fragment Layout Name. Это имя будет присвоено layout файлу фрагмента.
+5) Нажмите Finish. 
 
+![](img/img_create.png)
 
+### Соединение экранов
 
+Навести на экран от которого нужно совершить переход, на нем появится круги и соединить с экраном на который нужно перейти.
+
+![](img/img_connect.png)
+
+### Обозначить стартовый экран
+
+1) Выбрав стартовый экран 
+2) Кликнуть правой кнопкой мыши
+3) Выбрать Set as Start Destinition
+
+![](img/img_start_destinition.png)
+
+### Назначить "хост" навигационного графа
+
+Для того чтобы сделать activity хостом нужно:
+
+1) Добавить в layout activity NavHost
+2) Сопоставить с графом
+
+~~~ html
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <fragment
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/nav_host_fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        app:navGraph="@navigation/nav_graph"
+        app:defaultNavHost="true" />
+
+</FrameLayout>
+~~~
+
+app:defaultNavHost="true" - перехват системной кнопки Back.
+
+3) Далее добавить в acitvity следующий код
+
+~~~ Java
+ @Override
+ public boolean onSupportNavigateUp() {
+        return Navigation.findNavController(this, R.id.nav_host_fragment).navigateUp();
+    }
+~~~
+
+### Привязка переходов к виджетам
+
+Есть два способа сделать это
+~~~ Java
+view.findViewById(R.id.btn_sign_up)
+                .setOnClickListener(Navigation.createNavigateOnClickListener(R.id.fragment_sign_up, null));
+                
+view.findViewById(R.id.btn_sign_in)
+                .setOnClickListener(v->{
+                    Navigation.findNavController(v).navigate(R.id.action_fragment_main_to_fragment_sign_up);
+                });
+~~~
+
+Вот и все мы построили простейший навигационный граф
+
+### Передача данных
+
+1) Выбрав экран в navigation editor  добавляем аргументы
+
+![](img/img_data.png)
+
+2) Далее используем Bundle для передачи данных
+
+~~~ Java
+ Bundle bundle = new Bundle();
+ bundle.putString("email", edEmail.getText().toString());
+ bundle.putString("password", edPassword.getText().toString());
+ Navigation.findNavController(view).navigate(R.id.fragmnet_congratulation, bundle);
+~~~
+
+3) Достаем данные через getArguments();
+
+~~~ Java
+getArguments().getString("email", "");
+~~~
 
 
 
