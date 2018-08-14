@@ -20,7 +20,72 @@ dependencies {
 ~~~
 ### Ресурсы
 В папке res нужно создать ресурсы для навигации New -> Android resource file
-и выбрать Resource type Navigation, укажите имя файла, кликнете Ok.
+и выбрать Resource type Navigation, укажите имя файла, кликнете OK.
 
 ![](img/img_create_nav.png)
+
+Создается новая директория navigation в которой будет находится ранее созданный файл.
+
+## Обзор начального функционала 
+
+Файл навигационного графа имеет два режима разработки editor и text
+
+### Navigation Editor
+
+Предназначен для разработки навигации при помощи редактора без написание кода. Имеет три столбца
+
+![](img/img1.png)
+
+### Text
+
+В этом режиме мы пишем xml код 
+
+~~~ html
+...
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/test"
+    app:startDestination="@id/mainActivity">
+
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="andrey.murzin.navigation.MainActivity"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main" />
+</navigation>
+...
+~~~
+
+## Создание простейшего графа навигации
+
+Библиотека navigation предназначена для реализации “single activity application” поэтому  activity выступает в роли "хоста" графа.Если в приложении несколько activity то каждая активити будет иметь свой граф.
+
+Перейдем к практики и напишем простой навигационный граф постепенно усложняя его
+
+### Добавление экранов
+* В редакторе графов кликните New Destination . Откроется диалоговое окно New Destination.
+* Кликните Create blank destination или выберете существующий фрагмент или активность. Откроется диалоговое окно Android Component.
+* Введите имя в поле Fragment Name. 
+* Введите имя в поле Fragment Layout Name. Это имя будет присвоено layout файлу фрагмента.
+* Нажмите Finish. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
