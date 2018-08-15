@@ -11,9 +11,9 @@
 ### Основные библиотеки
 ~~~ groovy
 dependencies {
-    implementation "android.arch.navigation:navigation-fragment:1.0.0-alpha02"
-    implementation "android.arch.navigation:navigation-ui:1.0.0-alpha02"
-    androidTestImplementation "android.arch.navigation:navigation-testing:1.0.0-alpha02"
+    implementation "android.arch.navigation:navigation-fragment:1.0.0-alpha05"
+    implementation "android.arch.navigation:navigation-ui:1.0.0-alpha05"
+    androidTestImplementation "android.arch.navigation:navigation-testing:1.0.0-alpha05"
 }
 ~~~
 ### Ресурсы
@@ -169,28 +169,7 @@ view.findViewById(R.id.btn_sign_in)
 
 ### Передача данных
 
-1) Выбрав экран в navigation editor  добавляем аргументы
-
-![](img/img_data.png)
-
-Либо в Text прописываем аргументы
-
-~~~ html
-    <fragment
-        android:id="@+id/fragmnet_congratulation"
-        android:name="andrey.murzin.navigation.FragmnetCongratulation"
-        android:label="fragment_congratulation"
-        tools:layout="@layout/fragment_congratulation" >
-        <argument
-            android:name="email"
-            app:type="string" />
-        <argument
-            android:name="password"
-            app:type="string" />
-    </fragment>
-~~~
-
-2) Далее используем Bundle для передачи данных
+1) Далее используем Bundle для передачи данных
 
 ~~~ Java
  Bundle bundle = new Bundle();
@@ -199,11 +178,19 @@ view.findViewById(R.id.btn_sign_in)
  Navigation.findNavController(view).navigate(R.id.fragmnet_congratulation, bundle);
 ~~~
 
-3) Достаем данные через getArguments();
+2) Достаем данные через getArguments();
 
 ~~~ Java
 getArguments().getString("email", "");
 ~~~
+
+Способ не отличается от того как мы передавали данные ранее.
+Минусы
+1) Ключи для передачи данных нужно объявлять как публичные константы
+2) Постоянно нужно проверять куда передаешь и какого типа, и где это используется
+Плюсы
+1) Мало кода
+2) Нового ничего учить не надо
 
 ### Передача данных safetype
 
@@ -226,7 +213,26 @@ dependencies {
     }
 ~~~
 
-3) Далее добавляем аргументы как в делали это ранее в navigation editor
+3) Выбрав экран в navigation editor  добавляем аргументы
+
+![](img/img_data.png)
+
+В данный момент так сделать не получится потому что type deprecated и проект не собирется, поэтому напишем руками в Text передоваемые аргументы, указывая тип argType, так же можно указать defaultValue.
+
+~~~ html
+    <fragment
+        android:id="@+id/fragmnet_congratulation"
+        android:name="andrey.murzin.navigation.FragmnetCongratulation"
+        android:label="fragment_congratulation"
+        tools:layout="@layout/fragment_congratulation" >
+        <argument
+            android:name="email"
+            app:argType="string" />
+        <argument
+            android:name="password"
+            app:argType="string" />
+    </fragment>
+~~~
 
 4) Передача данных
 ~~~ java
@@ -242,7 +248,13 @@ Navigation.findNavController(view).navigate(action);
 FragmnetCongratulationArgs.fromBundle(getArguments()).getEmail();
 ~~~
 
-Этот спосбо мне кажется удобнее, безопаснее и более правильным.
+Этот способ мне кажется более правильным и безопасным в использовании
+Плюсы
+1) В xml графа можно явно посмотреть что передается и куда.
+2) Заполняя FragmentDiraction.Action видим данные которые требуются для передачи
+3) Извлечение данных через getter зашищает от ошибок
+Минусы
+1) Нужно писать больше кода
 
 ### Анимация перехода между экранами
 
