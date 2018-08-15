@@ -19,6 +19,9 @@
             app:destination="@id/fragment_sign_in"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim" />
+        <action
+            android:id="@+id/action_fragment_main_to_testActivity"
+            app:destination="@id/testActivity" />
     </fragment>
     <fragment
         android:id="@+id/fragment_sign_up"
@@ -44,9 +47,13 @@
         tools:layout="@layout/fragment_congratulation" >
         <argument
             android:name="email"
-            app:type="string" />
+            app:argType="string" />
         <argument
             android:name="password"
-            app:type="string" />
+            app:argType="string" />
     </fragment>
+    <activity
+        android:id="@+id/testActivity"
+        android:name="andrey.murzin.navigation.TestActivity"
+        android:label="TestActivity" />
 </navigation>

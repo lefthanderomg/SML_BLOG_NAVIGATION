@@ -42,6 +42,7 @@ public class FragmentSignIn extends Fragment {
                 Bundle bundle = new Bundle();
                 bundle.putString("email", edEmail.getText().toString());
                 bundle.putString("password", edPassword.getText().toString());
+
                 Navigation.findNavController(view).navigate(R.id.fragmnet_congratulation, bundle);
             }
         });
