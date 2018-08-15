@@ -175,7 +175,7 @@ view.findViewById(R.id.btn_sign_up)
                 .setOnClickListener(Navigation.createNavigateOnClickListener(R.id.fragment_sign_up, null));
 ~~~
 
-Ну по сути это просто обертка первого способа вот так выглядит метод изнутри createNavigateOnClickListener
+Ну по сути это просто обертка первого способа вот так выглядит метод createNavigateOnClickListener изнутри 
 
 ~~~ Java
 @NonNull
