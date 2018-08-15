@@ -18,9 +18,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".TestActivity">
+        <activity android:name=".TestGraphActivity">
 
         </activity>
+        <activity android:name=".TestActivity_1"/>
+        <activity android:name=".TestActivity_2"/>
     </application>
 
 </manifest>

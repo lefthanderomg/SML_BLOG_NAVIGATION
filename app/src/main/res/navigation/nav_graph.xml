@@ -47,6 +47,7 @@
         tools:layout="@layout/fragment_congratulation" >
         <argument
             android:name="email"
+
             app:argType="string" />
         <argument
             android:name="password"
@@ -54,6 +55,6 @@
     </fragment>
     <activity
         android:id="@+id/testActivity"
-        android:name="andrey.murzin.navigation.TestActivity"
+        android:name="andrey.murzin.navigation.TestGraphActivity"
         android:label="TestActivity" />
 </navigation>

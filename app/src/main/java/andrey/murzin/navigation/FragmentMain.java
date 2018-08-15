@@ -38,7 +38,7 @@ public class FragmentMain extends Fragment {
                     Navigation.findNavController(v).navigate(R.id.action_fragment_main_to_fragment_sign_in);
                 });
 
-        view.findViewById(R.id.btn_acitivty)
+        view.findViewById(R.id.btn_activity_graph)
                 .setOnClickListener(v->{
                     Navigation.findNavController(v).navigate(R.id.action_fragment_main_to_testActivity);
                 });
