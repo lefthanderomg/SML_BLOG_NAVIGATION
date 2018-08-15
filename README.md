@@ -275,8 +275,7 @@ FragmnetCongratulationArgs.fromBundle(getArguments()).getEmail();
 <argument
     android:name="user"
     app:argType="User" />
-~~~ html
-
+~~~ 
 
 ### Анимация перехода между экранами
 
