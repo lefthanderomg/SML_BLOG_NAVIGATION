@@ -40,9 +40,10 @@ public class FragmentSignUp extends Fragment {
 
         button.setOnClickListener(v -> {
             if (!TextUtils.isEmpty(edEmail.getText()) && !TextUtils.isEmpty(edPassword.getText())) {
+                User user = new User("test", "test");
                 FragmentSignUpDirections.ActionFragmentSignUpToFragmnetCongratulation action
                         = FragmentSignUpDirections
-                        .actionFragmentSignUpToFragmnetCongratulation("email", "password");
+                        .actionFragmentSignUpToFragmnetCongratulation("email", "password", user);
                 Navigation.findNavController(view).navigate(action);
             }
         });

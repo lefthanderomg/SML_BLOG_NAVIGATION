@@ -52,6 +52,10 @@
         <argument
             android:name="password"
             app:argType="string" />
+
+        <argument
+            android:name="user"
+            app:argType="User" />
     </fragment>
     <activity
         android:id="@+id/testActivity"
