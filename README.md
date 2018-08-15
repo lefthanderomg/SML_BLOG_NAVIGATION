@@ -62,9 +62,9 @@ dependencies {
 
 ## Создание графа навигации
 
-Библиотека navigation предназначена для реализации “single activity application” поэтому  activity выступает в роли "хоста" графа. Если в приложении несколько activity то каждая activity будет иметь свой граф.
+Библиотека navigation предназначена для реализации “single activity application” поэтому  activity выступает в роли "хоста" графа.
 
-Перейдем к практики и напишем простой навигационный граф постепенно усложняя его.
+Перейдем к практике и напишем простой навигационный граф постепенно усложняя его.
 
 ### Добавление экранов
 
@@ -166,6 +166,10 @@ view.findViewById(R.id.btn_sign_in)
                     Navigation.findNavController(v).navigate(R.id.action_fragment_main_to_fragment_sign_up);
                 });
 ~~~
+
+### Навигация между Activity
+
+Навигация между acivity реализуется таким же образом как и c fragment. Но такак как navigation это придерживается концепции "single activity application" вы не можете посторить навигаци такого вида activity->actvivity. Вы можете реализовать только fragment->activity и в acivity будет один экран без дальнейшей навигации, либо fragment->activity(graph) то есть в acivity будет еще один граф.
 
 ### Передача данных
 
