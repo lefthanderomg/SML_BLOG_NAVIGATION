@@ -266,6 +266,18 @@ FragmnetCongratulationArgs.fromBundle(getArguments()).getEmail();
 
 1) Нужно писать больше кода
 
+### Передача данных custom object
+
+1) Создать модель которая реализует интерфейс Parcelable
+2) Добавить аргумент argType должен соответствовать имени модели
+
+~~~ html
+<argument
+    android:name="user"
+    app:argType="User" />
+~~~ html
+
+
 ### Анимация перехода между экранами
 
 1) В Navigation Editor выбрать Action который будет осуществлять анимацию перехода
