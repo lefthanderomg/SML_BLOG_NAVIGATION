@@ -62,9 +62,9 @@ dependencies {
 
 ## Создание графа навигации
 
-Библиотека navigation предназначена для реализации “single activity application” поэтому  activity выступает в роли "хоста" графа. Если в приложении несколько activity то каждая activity будет иметь свой граф.
+Библиотека navigation предназначена для реализации “single activity application” поэтому  activity выступает в роли "хоста" графа.
 
-Перейдем к практики и напишем простой навигационный граф постепенно усложняя его.
+Перейдем к практике и напишем простой навигационный граф постепенно усложняя его.
 
 ### Добавление экранов
 
@@ -156,16 +156,43 @@ app:defaultNavHost="true" - перехват системной кнопки Bac
 
 ### Привязка переходов к виджетам
 
-Есть два способа сделать это
+Чтобы привезать переход из одного экрана в другой к определенному событию (клик по кнопки и тд.)
+
+Для этого есть два способа
+
+1) Нужно передать view в findNavController и выбрать нужный action обычно.
+
 ~~~ Java
-view.findViewById(R.id.btn_sign_up)
-                .setOnClickListener(Navigation.createNavigateOnClickListener(R.id.fragment_sign_up, null));
-                
 view.findViewById(R.id.btn_sign_in)
                 .setOnClickListener(v->{
                     Navigation.findNavController(v).navigate(R.id.action_fragment_main_to_fragment_sign_up);
                 });
 ~~~
+
+2) Немного упрощенная версия этого же действия createNavigateOnClickListener возращает готовый listner только теперь нужно указывать не action id а fragment id куда мы должны перейти
+~~~ Java
+view.findViewById(R.id.btn_sign_up)
+                .setOnClickListener(Navigation.createNavigateOnClickListener(R.id.fragment_sign_up, null));
+~~~
+
+Ну по сути это просто обертка первого способа вот так выглядит метод createNavigateOnClickListener изнутри 
+
+~~~ Java
+@NonNull
+    public static View.OnClickListener createNavigateOnClickListener(@IdRes final int resId,
+            @Nullable final Bundle args) {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                findNavController(view).navigate(resId, args);
+            }
+        };
+    }
+~~~
+
+### Навигация между Activity
+
+Навигация между activity реализуется таким же образом как и c fragment. Но так как библиотека navigation придерживается концепции "single activity application" вы не можете посторить навигацию такого вида activity->actvivity. Вы можете реализовать только fragment->activity и в acivity будет один экран без дальнейшей навигации, либо fragment->activity(graph) то есть в acivity будет еще один граф. Я думаю что если есть возможноть избегать использование activity то нужно это делать чтобы не противоречить библиотеки navigation так как тут явно появляются проблемы с тем что после того как мы перешли в acivity с еще один графом мы не видим его внутренний граф и полная картина навигации не видна.
 
 ### Передача данных
 
@@ -185,10 +212,12 @@ getArguments().getString("email", "");
 ~~~
 
 Способ не отличается от того как мы передавали данные ранее.
+
 Минусы
 
 1) Ключи для передачи данных нужно объявлять как публичные константы
 2) Постоянно нужно проверять куда передаешь и какого типа, и где это используется
+
 Плюсы
 
 1) Мало кода
@@ -261,6 +290,17 @@ FragmnetCongratulationArgs.fromBundle(getArguments()).getEmail();
 Минусы
 
 1) Нужно писать больше кода
+
+### Передача данных custom object
+
+1) Создать модель которая реализует интерфейс Parcelable
+2) Добавить аргумент argType должен соответствовать имени модели
+
+~~~ html
+<argument
+    android:name="user"
+    app:argType="User" />
+~~~ 
 
 ### Анимация перехода между экранами
 
