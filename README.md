@@ -156,15 +156,38 @@ app:defaultNavHost="true" - перехват системной кнопки Bac
 
 ### Привязка переходов к виджетам
 
-Есть два способа сделать это
+Чтобы привезать переход из одного экрана в другой к определенному событию (клик по кнопки и тд.)
+
+Для этого есть два способа
+
+1) Нужно передать view в findNavController и выбрать нужный action обычно.
+
 ~~~ Java
-view.findViewById(R.id.btn_sign_up)
-                .setOnClickListener(Navigation.createNavigateOnClickListener(R.id.fragment_sign_up, null));
-                
 view.findViewById(R.id.btn_sign_in)
                 .setOnClickListener(v->{
                     Navigation.findNavController(v).navigate(R.id.action_fragment_main_to_fragment_sign_up);
                 });
+~~~
+
+2) Немного упрощенная версия этого же действия createNavigateOnClickListener возращает готовый listner только теперь нужно указывать не action id а fragment id куда мы должны перейти
+~~~ Java
+view.findViewById(R.id.btn_sign_up)
+                .setOnClickListener(Navigation.createNavigateOnClickListener(R.id.fragment_sign_up, null));
+~~~
+
+Ну по сути это просто обертка первого способа вот так выглядит метод изнутри createNavigateOnClickListener
+
+~~~ Java
+@NonNull
+    public static View.OnClickListener createNavigateOnClickListener(@IdRes final int resId,
+            @Nullable final Bundle args) {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                findNavController(view).navigate(resId, args);
+            }
+        };
+    }
 ~~~
 
 ### Навигация между Activity
