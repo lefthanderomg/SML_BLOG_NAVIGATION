@@ -13,7 +13,6 @@
 dependencies {
     implementation "android.arch.navigation:navigation-fragment:1.0.0-alpha05"
     implementation "android.arch.navigation:navigation-ui:1.0.0-alpha05"
-    androidTestImplementation "android.arch.navigation:navigation-testing:1.0.0-alpha05"
 }
 ~~~
 ### Ресурсы
@@ -160,7 +159,7 @@ app:defaultNavHost="true" - перехват системной кнопки Bac
 
 Для этого есть два способа
 
-1) Нужно передать view в findNavController и выбрать нужный action обычно.
+1) Нужно передать view в findNavController и выбрать нужный action id.
 
 ~~~ Java
 view.findViewById(R.id.btn_sign_in)
@@ -169,13 +168,13 @@ view.findViewById(R.id.btn_sign_in)
                 });
 ~~~
 
-2) Немного упрощенная версия этого же действия createNavigateOnClickListener возращает готовый listner только теперь нужно указывать не action id а fragment id куда мы должны перейти
+2) Немного упрощенная версия этого же действия метод createNavigateOnClickListener возращает готовый listner и его нужно передать во нужное вам view, только теперь нужно указывать не action id, а fragment id на который хотим перейти.
 ~~~ Java
 view.findViewById(R.id.btn_sign_up)
                 .setOnClickListener(Navigation.createNavigateOnClickListener(R.id.fragment_sign_up, null));
 ~~~
-
-Ну по сути это просто обертка первого способа вот так выглядит метод createNavigateOnClickListener изнутри 
+Использовать можно и тот и тот явных плюсов и минусов я не выделил
+По сути это второй способ просто обертка первого способа вот так выглядит метод createNavigateOnClickListener изнутри 
 
 ~~~ Java
 @NonNull
