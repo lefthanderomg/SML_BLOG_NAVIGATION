@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-public class FragmnetCongratulation extends Fragment {
+public class FragmentCongratulation extends Fragment {
 
 
     @Override

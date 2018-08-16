@@ -42,7 +42,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragmnet_congratulation"
-        android:name="andrey.murzin.navigation.FragmnetCongratulation"
+        android:name="andrey.murzin.navigation.FragmentCongratulation"
         android:label="fragment_congratulation"
         tools:layout="@layout/fragment_congratulation" >
         <argument
