@@ -7,7 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import androidx.navigation.Navigation;
 
-public class TestGraphActivity extends AppCompatActivity {
+public class NestedActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

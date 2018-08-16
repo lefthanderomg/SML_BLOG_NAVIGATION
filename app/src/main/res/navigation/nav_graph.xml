@@ -59,6 +59,6 @@
     </fragment>
     <activity
         android:id="@+id/testActivity"
-        android:name="andrey.murzin.navigation.TestGraphActivity"
+        android:name="andrey.murzin.navigation.NestedActivity"
         android:label="TestActivity" />
 </navigation>
