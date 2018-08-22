@@ -205,7 +205,7 @@ view.findViewById(R.id.btn_sign_up)
 Для это задачи есть более изящное решение это вложенный граф.
 
 ### Вложенный граф
-Вложнный граф делается одним очень легко, нужно только выбрать экран с которого будет начинаться новый граф
+Вложнный граф делается очень легко, нужно только выбрать экран с которого будет начинаться новый граф.
 
 ![](img/img_nested.png)
 
@@ -213,7 +213,19 @@ view.findViewById(R.id.btn_sign_up)
 
 ![](img/nested_graph.png)
 
-И теперь мы можем переходить во вложенный граф из главного. При этом мы сразу видим что переход происходить во вложенный граф нежели если мы сделаем новый вложенный граф через activity.
+И теперь мы можем переходить во вложенный граф из главного. При этом наглядно видно куда мы переходим, что это не просто экран, а вложенный граф. При этом новый xml файл не создается, fragments просто заключаются в navigation тэг.
+
+~~~ Java
+<navigation android:id="@+id/navigation"
+        app:startDestination="@id/fragmentNested">
+         <fragment
+            android:id="@+id/fragmentNested"
+            android:name="test.FragmentNested"
+            android:label="fragment_nested"
+            tools:layout="@layout/fragment_nested" >
+</navigation>
+~~~
+
 
 ### Передача данных
 
