@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_fragment_main_to_testActivity"
             app:destination="@id/testActivity" />
+        <action
+            android:id="@+id/action_fragment_main_to_nestedFragment"
+            app:destination="@id/navigation" />
     </fragment>
     <fragment
         android:id="@+id/fragment_sign_up"
@@ -61,4 +64,21 @@
         android:id="@+id/testActivity"
         android:name="andrey.murzin.navigation.NestedActivity"
         android:label="TestActivity" />
+    <navigation android:id="@+id/navigation"
+        app:startDestination="@id/fragmentNested1">
+        <fragment
+            android:id="@+id/fragmentNested1"
+            android:name="andrey.murzin.navigation.FragmentNested1"
+            android:label="fragment_nested_1"
+            tools:layout="@layout/fragment_nested_1" >
+
+            <action
+                android:id="@+id/action_fragmentNested1_to_fragmentNested2"
+                app:destination="@id/fragmentNested2" />
+        </fragment>
+        <fragment
+            android:id="@+id/fragmentNested2"
+            android:name="andrey.murzin.navigation.FragmentNested2"
+            android:label="FragmentNested2" />
+    </navigation>
 </navigation>

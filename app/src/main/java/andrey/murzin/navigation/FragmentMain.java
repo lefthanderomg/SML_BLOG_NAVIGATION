@@ -42,6 +42,11 @@ public class FragmentMain extends Fragment {
                 .setOnClickListener(v->{
                     Navigation.findNavController(v).navigate(R.id.action_fragment_main_to_testActivity);
                 });
+
+        view.findViewById(R.id.btn_nested_fragment)
+                .setOnClickListener(v->{
+                    Navigation.findNavController(v).navigate(R.id.action_fragment_main_to_nestedFragment);
+                });
     }
 
 

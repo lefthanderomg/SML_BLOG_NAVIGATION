@@ -37,4 +37,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <Button
+        android:id="@+id/btn_nested_fragment"
+        android:layout_width="match_parent"
+        android:text="@string/nested_fragment"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_activity_graph" />
+
 </android.support.constraint.ConstraintLayout>
