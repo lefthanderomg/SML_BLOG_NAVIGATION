@@ -13,4 +13,5 @@
     <string name="activity">Activity</string>
     <string name="activity_navigation">activity navigation</string>
     <string name="nested_fragment">nested fragment</string>
+    <string name="splash">Splash</string>
 </resources>
