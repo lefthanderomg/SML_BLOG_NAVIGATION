@@ -12,17 +12,19 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".MainActivity">
+
+        </activity>
+        <activity android:name=".NestedActivity"/>
+
+        <activity android:name=".bottom_navigation.BottomActvitity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".NestedActivity">
 
-        </activity>
-        <activity android:name=".TestActivity_1"/>
-        <activity android:name=".TestActivity_2"/>
+
     </application>
 
 </manifest>
