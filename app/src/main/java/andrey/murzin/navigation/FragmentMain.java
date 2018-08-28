@@ -40,12 +40,20 @@ public class FragmentMain extends Fragment {
 
         view.findViewById(R.id.btn_activity_graph)
                 .setOnClickListener(v->{
-                    Navigation.findNavController(v).navigate(R.id.action_fragment_main_to_testActivity);
+                    Navigation.findNavController(v).navigate(R.id.action_fragment_main_to_nestedActivity);
                 });
 
         view.findViewById(R.id.btn_nested_fragment)
                 .setOnClickListener(v->{
                     Navigation.findNavController(v).navigate(R.id.action_fragment_main_to_nestedFragment);
+                });
+
+        view.findViewById(R.id.btn_error).setOnClickListener(
+                Navigation.createNavigateOnClickListener(R.id.fragmentError, null));
+
+        view.findViewById(R.id.btn_bottom).setOnClickListener(
+                v -> {
+                    Navigation.findNavController(v).navigate(R.id.action_fragment_main_to_bottomActvitity);
                 });
     }
 

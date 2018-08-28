@@ -19,9 +19,7 @@
             app:destination="@id/fragment_sign_in"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim" />
-        <action
-            android:id="@+id/action_fragment_main_to_testActivity"
-            app:destination="@id/testActivity" />
+
         <action
             android:id="@+id/action_fragment_main_to_nestedFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
@@ -29,6 +27,12 @@
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim"
             app:destination="@id/navigation" />
+        <action
+            android:id="@+id/action_fragment_main_to_nestedActivity"
+            app:destination="@id/nestedActivity2" />
+        <action
+            android:id="@+id/action_fragment_main_to_bottomActvitity"
+            app:destination="@id/bottomActvitity" />
     </fragment>
 
     <fragment
@@ -65,10 +69,6 @@
             android:name="user"
             app:argType="User" />
     </fragment>
-    <activity
-        android:id="@+id/testActivity"
-        android:name="andrey.murzin.navigation.NestedActivity"
-        android:label="TestActivity" />
     <navigation android:id="@+id/navigation"
         app:startDestination="@id/fragmentNested1">
         <fragment
@@ -93,10 +93,27 @@
         tools:layout="@layout/fragment_splash">
         <action
             android:id="@+id/action_splashFragment_to_fragment_main"
+            app:clearTask="true"
             app:destination="@id/fragment_main"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
+    <fragment
+        android:id="@+id/fragmentError"
+        android:name="andrey.murzin.navigation.FragmentError"
+        android:label="fragment_error"
+        tools:layout="@layout/fragment_error" />
+    <activity
+        android:id="@+id/nestedActivity2"
+        android:name="andrey.murzin.navigation.NestedActivity"
+        android:label="activity_nested"
+        tools:layout="@layout/activity_nested" />
+    <activity
+        android:id="@+id/bottomActvitity"
+        android:name="andrey.murzin.navigation.bottom_navigation.BottomActvitity"
+        android:label="activity_bottom"
+        tools:layout="@layout/activity_bottom" />
+
 </navigation>

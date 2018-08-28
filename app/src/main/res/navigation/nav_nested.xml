@@ -3,11 +3,41 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_test"
-    app:startDestination="@id/fragmentTest1">
+    app:startDestination="@id/fragmentNested1">
+
 
     <fragment
-        android:id="@+id/fragmentTest1"
+        android:id="@+id/fragmentNested1"
         android:name="andrey.murzin.navigation.FragmentNested1"
-        android:label="fragment_test_1"
-        tools:layout="@layout/fragment_nested_1" />
+        android:label="fragment_nested_1"
+        tools:layout="@layout/fragment_nested_1" >
+        <action
+            android:id="@+id/action_fragmentNested1_to_fragmentNested2"
+            app:destination="@id/fragmentNested2" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentNested2"
+        android:name="andrey.murzin.navigation.FragmentNested2"
+        android:label="fragment_nested_2"
+        tools:layout="@layout/fragment_nested_2" >
+        <action
+            android:id="@+id/action_fragmentNested2_to_fragmentNested3"
+            app:destination="@id/fragmentNested3" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentNested3"
+        android:name="andrey.murzin.navigation.FragmentNested3"
+        android:label="fragment_nested_3"
+        tools:layout="@layout/fragment_nested_3" >
+        <action
+            android:id="@+id/action_fragmentNested3_to_fragmentNested4"
+            app:destination="@id/fragmentNested4"
+            app:popUpTo="@+id/fragmentNested2"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentNested4"
+        android:name="andrey.murzin.navigation.FragmentNested4"
+        android:label="fragment_nested_4"
+        tools:layout="@layout/fragment_nested_4" />
 </navigation>
