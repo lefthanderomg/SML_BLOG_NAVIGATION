@@ -42,7 +42,7 @@
         tools:layout="@layout/fragment_sign_up" >
         <action
             android:id="@+id/action_fragment_sign_up_to_fragmnet_congratulation"
-            app:destination="@id/fragmnet_congratulation" />
+            app:destination="@id/fragmnet_congratulation" /><deepLink app:uri="app://sml/deeplink/{id}"/>
     </fragment>
     <fragment
         android:id="@+id/fragment_sign_in"
@@ -68,23 +68,15 @@
         <argument
             android:name="user"
             app:argType="User" />
+        <argument android:name="test" />
     </fragment>
     <navigation android:id="@+id/navigation"
-        app:startDestination="@id/fragmentNested1">
+        app:startDestination="@id/fragmentError2">
         <fragment
-            android:id="@+id/fragmentNested1"
-            android:name="andrey.murzin.navigation.FragmentNested1"
-            android:label="fragment_nested_1"
-            tools:layout="@layout/fragment_nested_1" >
-
-            <action
-                android:id="@+id/action_fragmentNested1_to_fragmentNested2"
-                app:destination="@id/fragmentNested2" />
-        </fragment>
-        <fragment
-            android:id="@+id/fragmentNested2"
-            android:name="andrey.murzin.navigation.FragmentNested2"
-            android:label="FragmentNested2" />
+            android:id="@+id/fragmentError2"
+            android:name="andrey.murzin.navigation.FragmentError"
+            android:label="fragment_error"
+            tools:layout="@layout/fragment_error" />
     </navigation>
     <fragment
         android:id="@+id/splashFragment"

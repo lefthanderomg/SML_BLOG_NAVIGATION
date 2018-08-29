@@ -21,8 +21,6 @@ public class FragmentNested3 extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         view.findViewById(R.id.btn_next).setOnClickListener(
-                v -> {
-                    Navigation.findNavController(v).navigate(R.id.action_fragmentNested3_to_fragmentNested4);
-                });
+                v -> Navigation.findNavController(v).navigate(R.id.action_fragmentNested3_to_fragmentNested4));
     }
 }
