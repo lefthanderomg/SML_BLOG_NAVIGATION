@@ -41,8 +41,8 @@
         android:label="fragment_sign_up"
         tools:layout="@layout/fragment_sign_up" >
         <action
-            android:id="@+id/action_fragment_sign_up_to_fragmnet_congratulation"
-            app:destination="@id/fragmnet_congratulation" /><deepLink app:uri="app://sml/deeplink/{id}"/>
+            android:id="@+id/action_fragment_sign_up_to_fragment_congratulation"
+            app:destination="@id/fragmenet_congratulation" /><deepLink app:uri="app://sml/deeplink/{id}"/>
     </fragment>
     <fragment
         android:id="@+id/fragment_sign_in"
@@ -50,16 +50,15 @@
         android:label="fragment_sign_in" >
         <action
             android:id="@+id/action_fragment_sign_in_to_fragmnet_congratulation"
-            app:destination="@id/fragmnet_congratulation" />
+            app:destination="@id/fragmenet_congratulation" />
     </fragment>
     <fragment
-        android:id="@+id/fragmnet_congratulation"
+        android:id="@+id/fragmenet_congratulation"
         android:name="andrey.murzin.navigation.FragmentCongratulation"
         android:label="fragment_congratulation"
         tools:layout="@layout/fragment_congratulation" >
         <argument
             android:name="email"
-
             app:argType="string" />
         <argument
             android:name="password"
@@ -68,7 +67,6 @@
         <argument
             android:name="user"
             app:argType="User" />
-        <argument android:name="test" />
     </fragment>
     <navigation android:id="@+id/navigation"
         app:startDestination="@id/fragmentError2">

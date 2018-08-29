@@ -10,8 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
-import org.w3c.dom.Text;
-
 import androidx.navigation.Navigation;
 
 public class FragmentSignIn extends Fragment {
@@ -41,9 +39,10 @@ public class FragmentSignIn extends Fragment {
             if (!TextUtils.isEmpty(edEmail.getText()) && !TextUtils.isEmpty(edPassword.getText())) {
                 Bundle bundle = new Bundle();
                 bundle.putString("email", edEmail.getText().toString());
-                bundle.putString("testarg", edPassword.getText().toString());
+                bundle.putString("password", edPassword.getText().toString());
+                bundle.putParcelable("user", new User("password","email"));
 
-                Navigation.findNavController(view).navigate(R.id.fragmnet_congratulation, bundle);
+                Navigation.findNavController(view).navigate(R.id.fragmenet_congratulation, bundle);
             }
         });
     }
