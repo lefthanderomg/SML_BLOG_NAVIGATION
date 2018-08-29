@@ -104,7 +104,7 @@
         tools:layout="@layout/activity_nested" />
     <activity
         android:id="@+id/bottomActvitity"
-        android:name="andrey.murzin.navigation.bottom_navigation.BottomActvitity"
+        android:name="andrey.murzin.navigation.bottom_navigation.BottomActivity"
         android:label="activity_bottom"
         tools:layout="@layout/activity_bottom" />
 
